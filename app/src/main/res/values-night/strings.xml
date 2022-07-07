@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bienvenidx">Bienvenidx</string>
+    <string name="enter_name">Porfavor Ingresa Tu Nombre</string>
+    <string name="name">Nombre</string>
+    <string name="Start">Empezar</string>
+</resources>

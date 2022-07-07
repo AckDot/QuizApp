@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".FragmentB"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    >
+
+    <!-- TODO: Update blank fragment layout -->
+
+        <TextView
+            android:id="@+id/tvpreg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:textColor="#363A43"
+            android:textSize="22sp"
+            android:text="Que es esto ?"/>
+
+        <ImageView
+            android:id="@+id/iv_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_vertical"
+            android:src="@drawable/pregunta_binding"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            >
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:max="10"
+                android:minHeight="50dp"
+                android:progress="0"
+                android:indeterminate="false"
+                />
+            <TextView
+                android:id="@+id/tvprogr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="15dp"
+                android:textColor="#363A43"
+                android:textSize="15sp"
+                android:text="0/2"
+                />
+
+        </LinearLayout>
+
+    <TextView
+         android:id="@+id/resp1"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:padding="15dp"
+         android:background="@drawable/btn_default"
+         tools:text="REsp 1"
+         android:textSize="18sp"
+         android:textColor="#7A8090"
+         android:gravity="center"/>
+    <TextView
+        android:id="@+id/resp2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="15dp"
+        android:background="@drawable/btn_default"
+        tools:text="Resp 2"
+        android:textColor="#7A8090"
+        android:textSize="18sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/resp3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:padding="15dp"
+        android:background="@drawable/btn_default"
+        tools:text="Resp 3"
+        android:textColor="#7A8090"
+        android:textSize="18sp"
+        android:gravity="center"/>
+    <TextView
+        android:id="@+id/resp4"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:background="@drawable/btn_default"
+        android:textColor="#7A8090"
+        tools:text="Resp 4"
+        android:textSize="18sp"
+        android:gravity="center"/>
+    <Button
+        android:id="@+id/submitbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/roundstyle"
+        android:backgroundTint="@color/light_green"
+        tools:text="Submit"
+        android:text="SUBMIT"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+</LinearLayout>
