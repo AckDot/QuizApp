@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.findFragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
@@ -40,8 +40,8 @@ class FragmentA : Fragment() {
         inflater.inflate(R.menu.overflow_menu, menu)
     }
 
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
         return NavigationUI.onNavDestinationSelected(item, requireView().findNavController() )
                 || super.onOptionsItemSelected(item)
     }

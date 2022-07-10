@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Ayuda">
-
+    android:fillViewport="true"
+    tools:context=".AyudaFragment">
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#4BAAECAD"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+      <TextView
         android:textSize="25sp"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:padding="20dp"
+          android:layout_marginTop="50dp"
+        android:layout_margin="30dp"
         android:textColor="@color/black_overlay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment" />
-    <TextView
-        android:textSize="25sp"
-        android:textAlignment="center"
-        android:textColor="@color/black_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Hola" />
+        android:text="Hola la presente aplicacion tiene
+el fin de realizar una prueba para una aplicacion
+hecha en kotlin con una combinacion de viewBinding ,
+dataBinding , fragmentos , actividades, navigation
+y demas servicios donde puedes acceder comodamente a realizar un quiz
+ y etc ... , me gustaria añadir aca guias animadas pero todavia
+no se como , asi que tendre que esperar a averiguarlo
+por lo pronto lo mejor sera mantener esto que todavia funciona
+, seguir aprendiendo kotlin y ademas aprender mas sobre el
+IDE de Android Studio que ya me tiene loco XD , y este
+mensaje se quedara como static data , porque da flogera cambiarlo
+despues de hoy. " />
 
-</LinearLayout>
+    </GridLayout>
+</ScrollView>

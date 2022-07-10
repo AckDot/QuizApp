@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -33,10 +33,11 @@
 
         >
 
-        <LinearLayout
+        <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:soundEffectsEnabled="true"
             android:padding="16dp">
 
             <TextView
@@ -66,12 +67,15 @@
                     android:id="@+id/et_namespace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:contentDescription="campo para ingresar tu nombre"
                     android:hint="@string/name"
-                    android:textSize="18sp"
-                    android:minHeight="30dp"
+                    android:inputType="textPersonName"
                     android:maxHeight="50dp"
+                    android:minHeight="30dp"
+                    android:singleLine="true"
                     android:textColor="#363A43"
-                    android:textColorHint="#7A8089" />
+                    android:textColorHint="#7A8089"
+                    android:textSize="18sp" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -84,8 +88,8 @@
                 android:text="@string/Start"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />
-        </LinearLayout>
+        </GridLayout>
     </androidx.cardview.widget.CardView>
 
 
-</RelativeLayout>
+</LinearLayout>

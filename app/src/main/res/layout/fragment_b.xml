@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true"
     tools:context=".FragmentB"
     android:orientation="vertical"
-    android:gravity="center"
-    android:padding="16dp"
     >
 
     <!-- TODO: Update blank fragment layout -->
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".FragmentB"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp"
+            >
         <TextView
             android:id="@+id/tvpreg"
             android:layout_width="match_parent"
@@ -19,20 +24,22 @@
             android:layout_margin="10dp"
             android:gravity="center"
             android:textColor="#363A43"
-            android:textSize="22sp"
-            android:text="Que es esto ?"/>
-
-        <ImageView
-            android:id="@+id/iv_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_vertical"
-            android:src="@drawable/pregunta_binding"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:text="Que es esto ?"
             />
+
+            <ImageView
+                android:id="@+id/iv_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/btn_default"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical"
+                tools:src="@drawable/pregunta_binding"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -124,11 +131,10 @@
         android:layout_margin="10dp"
         android:background="@drawable/roundstyle"
         android:backgroundTint="@color/light_green"
-        tools:text="Submit"
         android:text="SUBMIT"
         android:textSize="18sp"
         android:textColor="@color/white"
         android:textStyle="bold"
         />
-
-</LinearLayout>
+        </LinearLayout>
+</ScrollView>
