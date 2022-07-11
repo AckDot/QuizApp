@@ -55,7 +55,8 @@
                 android:gravity="center"
                 android:text="@string/enter_name"
                 android:textColor="#7A8089"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                tools:ignore="TextContrastCheck" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -67,7 +68,6 @@
                     android:id="@+id/et_namespace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:contentDescription="campo para ingresar tu nombre"
                     android:hint="@string/name"
                     android:inputType="textPersonName"
                     android:maxHeight="50dp"
@@ -75,7 +75,8 @@
                     android:singleLine="true"
                     android:textColor="#363A43"
                     android:textColorHint="#7A8089"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
