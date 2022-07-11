@@ -83,8 +83,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/roundstyle"
-                android:backgroundTint="@color/black"
+                android:background="@drawable/roundstyle_empezar"
                 android:text="@string/Start"
                 android:textColor="@android:color/white"
                 android:textSize="18sp" />

@@ -1,8 +1,7 @@
 package com.example.quizapp
 object Constants {
-    const val username:String = "Hola mundo"
-    const val cantPreg:Int = 1
-    const val pregcorrectas:String ="son 5 "
+    var username:String =""
+    const val cantPreg:Int = 15
 
     fun getQuestions():ArrayList<Question>{
         val questionList = ArrayList<Question>()
@@ -52,9 +51,9 @@ object Constants {
             R.drawable.viewbinding_databinding ,
             "Se usa para manejar la persistencia de las bases de datos y crea vistas faciles en funcion de estas" ,
             "liveData se refiere al manejo de memoria en Fragmentos e Intents" ,
-            "Clase contenedora de datos observable , esta optimizado para lifecycle .Esta optimización garantiza que LiveData solo actualice observadores de componentes de apps que tienen un estado de ciclo de vida activo.",
+           "Clase contenedora de datos observable , esta optimizado para lifecycle .Esta optimización garantiza que LiveData solo actualice observadores de componentes de apps que tienen un estado de ciclo de vida activo.",
             "liveData se refiere a contenedores de memoria en Activities y Fragmentos que se enlazan para el lenguaje Kotlin",
-            "Clase contenedora de datos observable , esta optimizado para lifecycle .Esta optimización garantiza que LiveData solo actualice observadores de componentes de apps que tienen un estado de ciclo de vida activo."
+          "Clase contenedora de datos observable , esta optimizado para lifecycle .Esta optimización garantiza que LiveData solo actualice observadores de componentes de apps que tienen un estado de ciclo de vida activo."
         )
         val que6 = Question(6,
             "Que es un Bundle",
@@ -164,5 +163,4 @@ object Constants {
     questionList.add(que15)
     return questionList
     }
-
 }

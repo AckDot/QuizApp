@@ -6,16 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.viewModels
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.quizapp.databinding.FragmentCBinding
 
 
 class FragmentC : Fragment() {
-    // TODO: Rename and change types of parameters
+
+private lateinit var binding: FragmentCBinding
+    private val viewModel: ViewModelFragmentB by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,15 +27,41 @@ class FragmentC : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_c, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val btn = view.findViewById<Button>(R.id.btn_retry)
-        btn?.setOnClickListener{
-            view.findNavController().navigate(R.id.action_fragmentC_to_fragmentA)
+
+        val puntaje:Int = activity!!.intent.getIntExtra("puntaje" , 0)
+        if(puntaje>7){
+            binding.imgResultado.setImageResource(R.drawable.trofeo)
+            binding.msgResultado.text = "Felicitaciones"
+            binding.msgUser.text = Constants.username
+            binding.tvScore.text = "Tu Resultado es "+"${puntaje}"+"de"+"${Constants.cantPreg}"
+        }else{
+            binding.imgResultado.setImageResource(R.drawable.trofeo_blanco)
+            binding.msgResultado.text = "Ups... casi"
+            binding.msgUser.text = Constants.username
+            binding.tvScore.text = "Tu Resultado es "+"${puntaje}"+"de"+"${Constants.cantPreg}"
         }
+        binding.btnRetry.setOnClickListener{
+            restartGame()
+        }
+        binding.btnSalir.setOnClickListener { pantallaPrincipal() }
         super.onViewCreated(view, savedInstanceState)
+    }
+    /*
+        * Sale del juego a la pantallaprincipal Frag c -> Frag a
+        */
+    private fun pantallaPrincipal() {
+        //activity?.finish() -> sale de una actividad
+        viewModel.reinitializeData()
+        Constants.username =""
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_fragmentC_to_fragmentA) }
+    }
+
+    private fun restartGame() {
+        viewModel.reinitializeData()
+        view?.let { Navigation.findNavController(it).navigate(R.id.action_fragmentC_to_fragmentB) }
     }
 }

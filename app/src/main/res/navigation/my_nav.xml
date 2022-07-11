@@ -43,6 +43,13 @@
             app:exitAnim="@android:anim/slide_out_right"
             app:popUpTo="@id/fragmentA"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_fragmentC_to_fragmentB"
+            app:destination="@id/fragmentB"
+            app:enterAnim="@android:anim/accelerate_interpolator"
+            app:exitAnim="@android:anim/accelerate_decelerate_interpolator"
+            app:popEnterAnim="@android:anim/linear_interpolator"
+            app:popExitAnim="@android:anim/linear_interpolator" />
     </fragment>
     <fragment
         android:id="@+id/AyudaFragment"

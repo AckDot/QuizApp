@@ -28,6 +28,7 @@ class FragmentA : Fragment() {
             if(etname.text.toString().isEmpty()) {
                 Toast.makeText(activity,"Ingresa tu nombre", Toast.LENGTH_SHORT).show()
             }else{
+                Constants.username = etname.text.toString()
                 Navigation.findNavController(view).navigate(R.id.action_fragmentA_to_fragmentB)
             }
         }

@@ -1,26 +1,25 @@
 package com.example.quizapp
 
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.fragment.app.findFragment
-import com.example.quizapp.databinding.ActivityMainBinding
-import com.example.quizapp.databinding.FragmentCBinding
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
+import com.example.quizapp.databinding.FragmentBBinding
+
 
 
 class FragmentB : Fragment() {
 
-private lateinit var binding: ActivityMainBinding
-private var listpreg:ArrayList<Question>? = null
-private var score = 0
-private var prAct:Question = listpreg!![0]
+private lateinit var binding: FragmentBBinding
+private val viewModel: ViewModelFragmentB by viewModels()
+private var opcionelegida =""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,47 +31,83 @@ private var prAct:Question = listpreg!![0]
         savedInstanceState: Bundle?
     ): View? {
         view?.isVerticalScrollBarEnabled
+        binding = FragmentBBinding.inflate(inflater, container, false)
 
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_b, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val listaPreg = Constants.getQuestions()
-
-        Log.i("Questions Size", "${listaPreg.size}")//para verificar la cantidad de preguntas
-        val currentposition = 1
-        val question: Question? = listaPreg[currentposition - 1]
-        val BarraPrg = view?.findViewById<ProgressBar>(R.id.progressBar)
-        BarraPrg?.progress = currentposition
-        view?.findViewById<TextView>(R.id.tvpreg)?.text = question!!.question // seccion de la pregunta
-        //seccion de la imagen
-        view?.findViewById<ImageView>(R.id.iv_img)?.setImageResource(question.image)
-        //seccion de las opciones
-        view?.findViewById<TextView>(R.id.tvprogr)?.text = "$currentposition "+ "/" +BarraPrg?.max
-        val btn = view?.findViewById<Button>(R.id.btnStart)
-        view?.findViewById<Button>(R.id.btnStart)
-
         super.onViewCreated(view, savedInstanceState)
-    }
-    fun nuevapregunta(){
-
-    }
-    fun cambiarpregunta(){
-
-    }
-    fun irAVtnFin(){
+       llenarFrag()
+        binding.resp1.setOnClickListener { opcionelegida= binding.resp1.text as String }
+        binding.resp2.setOnClickListener { opcionelegida= binding.resp2.text as String }
+        binding.resp3.setOnClickListener { opcionelegida= binding.resp3.text as String }
+        binding.resp4.setOnClickListener { opcionelegida= binding.resp4.text as String }
+        binding.submitbtn.setOnClickListener{ onSubmit()  }
 
     }
 
-    fun sortearPreguntas(ques :Question):Array<Int>{
-        val arrOpciones = arrayOfNulls<String>(4)
-        arrOpciones[0] = ques.optionOne
-        arrOpciones[1] = ques.optionTwo
-        arrOpciones[2] = ques.optionTwo
-        arrOpciones[3] = ques.optionThree
-        var nAO =  arrayOfNulls<String>(4)
+    //reinicia las preguntas
 
+    private fun obtenerPreg(): Question {
+        viewModel.sigPreg() //damos su primer valor a la preg actual luego
+        // aumentamos el valor de la posicion de la pregunta
+        val act = viewModel.pregAct
+        //obtenemos el valor
+        return act
     }
+    //mezclar opciones del array
+    private fun MezclarOpcionesPregAct(): Array<String> {
+        val ArrOpciones = arrayOf<String>(viewModel.pregAct.optionOne ,
+            viewModel.pregAct.optionTwo ,
+            viewModel.pregAct.optionThree,
+            viewModel.pregAct.optionFour
+        )
+        ArrOpciones.shuffle() //mezclamos las opciones de la pregunta actual
+        return ArrOpciones
+    }
+
+    private fun llenarFrag(){
+        val pregact = obtenerPreg()
+        var posAct = viewModel.idPregAct
+        vistaDefaultOpciones()
+        binding.tvpreg.text = pregact.question
+        binding.ivImg.setImageResource(pregact.image)
+        binding.progressBar.progress = viewModel.idPregAct
+        binding.tvpreg.text = "$posAct"+"/"+Constants.cantPreg
+        val opciones = MezclarOpcionesPregAct()
+        binding.resp1.text = opciones[0]
+        binding.resp2.text =  opciones[1]
+        binding.resp3.text =  opciones[2]
+        binding.resp4.text =  opciones[3]
+    }
+
+    private fun vistaDefaultOpciones(){
+        val opciones = ArrayList<TextView>()
+        opciones.add(binding.resp1)
+        opciones.add(binding.resp2)
+        opciones.add(binding.resp3)
+        opciones.add(binding.resp4)
+        for(opcion in opciones){
+            opcion.setTextColor(Color.parseColor("#7A8090"))
+            opcion.typeface = Typeface.DEFAULT
+        }
+    }
+
+    private fun onSubmit(){
+        if(viewModel.idPregAct<15){
+            if (viewModel.opcionCorrecta(opcionelegida)) {
+                viewModel.aumentarPuntaje()
+            }
+            llenarFrag()
+        }else{
+            val intent = Intent(activity, FragmentC::class.java)
+            intent.putExtra("puntaje", viewModel.puntaje)
+            startActivity(intent)
+        }
+    }
+
+
+
 
 }

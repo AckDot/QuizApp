@@ -84,6 +84,16 @@
             android:text="Retry ?"
             android:textSize="22sp"
             />
+        <Button
+            android:id="@+id/btnSalir"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:background="@drawable/btn_retry"
+            android:padding="15dp"
+            android:text="Salir ?"
+            android:textSize="22sp"
+            />
 
     </LinearLayout>
 
