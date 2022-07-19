@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.findFragment
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 
 
@@ -24,12 +25,12 @@ class FragmentA : Fragment() {
         val buttonA = view.findViewById<Button>(R.id.btnStart)
         val etname = view.findViewById<EditText>(R.id.et_namespace)
 
-        buttonA?.setOnClickListener { view: View ->
+        buttonA?.setOnClickListener {
             if(etname.text.toString().isEmpty()) {
                 Toast.makeText(activity,"Ingresa tu nombre", Toast.LENGTH_SHORT).show()
             }else{
                 Constants.username = etname.text.toString()
-                Navigation.findNavController(view).navigate(R.id.action_fragmentA_to_fragmentB)
+                findNavController().navigate(R.id.action_fragmentA_to_fragmentB)
             }
         }
         setHasOptionsMenu(true)

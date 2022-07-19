@@ -9,8 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
+
 import androidx.fragment.app.viewModels
+
+import androidx.navigation.fragment.findNavController
 import com.example.quizapp.databinding.FragmentBBinding
 
 
@@ -39,7 +41,8 @@ private var opcionelegida =""
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
        llenarFrag()
-        binding.resp1.setOnClickListener { opcionelegida= binding.resp1.text as String }
+        binding.resp1.setOnClickListener {
+            opcionelegida= binding.resp1.text as String }
         binding.resp2.setOnClickListener { opcionelegida= binding.resp2.text as String }
         binding.resp3.setOnClickListener { opcionelegida= binding.resp3.text as String }
         binding.resp4.setOnClickListener { opcionelegida= binding.resp4.text as String }
@@ -56,9 +59,11 @@ private var opcionelegida =""
         //obtenemos el valor
         return act
     }
+    // lower camel case ,,, upper camel case
+    // Linter ,
     //mezclar opciones del array
-    private fun MezclarOpcionesPregAct(): Array<String> {
-        val ArrOpciones = arrayOf<String>(viewModel.pregAct.optionOne ,
+    private fun mezclarOpcionesPregAct(): Array<String> {
+        val ArrOpciones = arrayOf(viewModel.pregAct.optionOne ,
             viewModel.pregAct.optionTwo ,
             viewModel.pregAct.optionThree,
             viewModel.pregAct.optionFour
@@ -75,7 +80,7 @@ private var opcionelegida =""
         binding.ivImg.setImageResource(pregact.image)
         binding.progressBar.progress = viewModel.idPregAct
         binding.tvpreg.text = "$posAct"+"/"+Constants.cantPreg
-        val opciones = MezclarOpcionesPregAct()
+        val opciones = mezclarOpcionesPregAct()
         binding.resp1.text = opciones[0]
         binding.resp2.text =  opciones[1]
         binding.resp3.text =  opciones[2]
@@ -95,15 +100,17 @@ private var opcionelegida =""
     }
 
     private fun onSubmit(){
-        if(viewModel.idPregAct<15){
+        if(viewModel.idPregAct < Constants.cantPreg){
             if (viewModel.opcionCorrecta(opcionelegida)) {
                 viewModel.aumentarPuntaje()
             }
             llenarFrag()
         }else{
-            val intent = Intent(activity, FragmentC::class.java)
-            intent.putExtra("puntaje", viewModel.puntaje)
-            startActivity(intent)
+            val action = FragmentBDirections.actionFragmentBToFragmentC(viewModel.puntaje)
+            findNavController().navigate(action)
+
+//            intent.putExtra("puntaje", viewModel.puntaje)
+
         }
     }
 

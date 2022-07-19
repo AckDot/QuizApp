@@ -17,17 +17,17 @@
             android:gravity="center"
             android:padding="12dp"
             >
-        <TextView
-            android:id="@+id/tvpreg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:textColor="#363A43"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            tools:text="Que es esto ?"
-            />
+
+            <TextView
+                android:id="@+id/tvpreg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:textColor="#363A43"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                tools:text="Que es esto ?" />
 
             <ImageView
                 android:id="@+id/iv_img"
@@ -40,6 +40,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical"
                 android:contentDescription="Imagen asociativa para "
+                android:visibility="gone"
                 tools:src="@drawable/pregunta_binding"/>
         <LinearLayout
             android:layout_width="match_parent"

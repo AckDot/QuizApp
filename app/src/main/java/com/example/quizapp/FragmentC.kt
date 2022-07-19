@@ -9,13 +9,15 @@ import android.widget.Button
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.quizapp.databinding.FragmentCBinding
 
 
 class FragmentC : Fragment() {
 
-private lateinit var binding: FragmentCBinding
+    private lateinit var binding: FragmentCBinding
     private val viewModel: ViewModelFragmentB by viewModels()
+    private val args: FragmentCArgs by navArgs()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +29,13 @@ private lateinit var binding: FragmentCBinding
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_c, container, false)
+        binding = FragmentCBinding.inflate(inflater,container,false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val puntaje:Int = activity!!.intent.getIntExtra("puntaje" , 0)
+        val puntaje:Int = args.puntaje
         if(puntaje>7){
             binding.imgResultado.setImageResource(R.drawable.trofeo)
             binding.msgResultado.text = "Felicitaciones"

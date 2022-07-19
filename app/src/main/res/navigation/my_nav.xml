@@ -15,8 +15,7 @@
         <action
             android:id="@+id/action_fragmentA_to_fragmentB"
             app:destination="@id/fragmentB"
-            app:enterAnim="@android:anim/anticipate_interpolator"
-            app:exitAnim="@android:anim/linear_interpolator" />
+             />
 
     </fragment>
     <fragment
@@ -50,6 +49,10 @@
             app:exitAnim="@android:anim/accelerate_decelerate_interpolator"
             app:popEnterAnim="@android:anim/linear_interpolator"
             app:popExitAnim="@android:anim/linear_interpolator" />
+        <argument
+            android:name="puntaje"
+            app:argType="integer"
+            android:defaultValue="0"/>
     </fragment>
     <fragment
         android:id="@+id/AyudaFragment"
